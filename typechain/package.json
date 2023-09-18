@@ -1,0 +1,21 @@
+{
+  "name": "@orivium/contract",
+  "version": "0.1.11",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "files": [
+    "./**"
+  ],
+  "dependencies": {
+    "ethers": "^6.6.2"
+  },
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^3.0.3",
+    "typescript": "^5.0.4"
+  },
+  "publishConfig": {
+    "@orivium:registry": "https://npm.pkg.github.com/"
+  }
+}
