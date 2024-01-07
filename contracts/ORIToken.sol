@@ -11,7 +11,7 @@ import {ERC20Permit} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20P
  * Based on the OpenZeppelin implementation of ERC20, ERC20Burnable and ERC20Permit.
  */
 contract ORIToken is ERC20, ERC20Burnable, ERC20Permit {
-    constructor(uint256 initialSupply) ERC20("Ori", "ORI") ERC20Permit("Ori") {
+    constructor(uint256 initialSupply) ERC20("Orivium", "ORI") ERC20Permit("Orivium") {
         _mint(_msgSender(), initialSupply);
     }
 }
