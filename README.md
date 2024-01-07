@@ -1,3 +1,3 @@
 # orivium-token
 
-this repository contains the smart contracts for the orivium token.
+orivium token smart contract
