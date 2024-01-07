@@ -1,17 +1,12 @@
 import { expect } from 'chai';
 import { ethers, deployments } from 'hardhat';
-import { shouldBehaveLikeERC20 } from './ERC20.behavior';
-import { shouldBehaveLikeERC20Burnable } from './ERC20Burnable.behavior';
-// import { getNamedAccounts } from '../../utils';
 import { ORIToken } from "@orivium/types";
 
 describe('ERC20', () => {
   let token: ORIToken;
-  const tokenContractName = "ORIToken";
-  const initialSupply = 100000000000000000000000000n;
 
   beforeEach(async () => {
-    await deployments.fixture([tokenContractName]);
+    await deployments.fixture(["ORIToken"]);
     token = await ethers.getContract("ORIToken");
   });
 
@@ -27,6 +22,6 @@ describe('ERC20', () => {
     expect(await token.decimals()).to.equal(18);
   });
 
-  shouldBehaveLikeERC20(tokenContractName, initialSupply);
-  shouldBehaveLikeERC20Burnable(tokenContractName, initialSupply);
+  // no need to test behaviors while they are tested in OpenZeppelin's ERC20 tests
+  // https://github.com/OpenZeppelin/openzeppelin-contracts/tree/v5.0.0/test/token/ERC20
 });

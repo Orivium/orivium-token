@@ -29,7 +29,6 @@ if (process.env["COINMARKETCAP_API_KEY"]) {
 
 const ledgerAccounts = [
     "0x935967faD7ebE3E686cf3d835dEfEBA6B5a70CdC", // orivium admin public
-    "0xf310366666882274F2bF184F9Ab790906142fF9B", // crowdsale fund collector
 ];
 
 const config: HardhatUserConfig = {
@@ -41,14 +40,14 @@ const config: HardhatUserConfig = {
         localhost: {
             chainId: 31337,
         },
-        goerli: {
-            url: "https://ethereum-goerli.publicnode.com",
-            chainId: 5,
+        sepolia: {
+            url: "https://ethereum-sepolia.publicnode.com",
+            chainId: 11155111,
             ledgerAccounts,
         },
-        arbitrumGoerli: {
-            url: "https://goerli-rollup.arbitrum.io/rpc",
-            chainId: 421613,
+        arbitrumSepolia: {
+            url: "https://sepolia-rollup.arbitrum.io/rpc",
+            chainId: 421614,
             ledgerAccounts,
         },
         mainnet: {
