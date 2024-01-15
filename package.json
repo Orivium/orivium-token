@@ -1,26 +1,20 @@
 {
-  "name": "@orivium/token",
-  "version": "1.0.0",
+  "name": "@orivium/smart-contracts",
+  "version": "0.0.1",
   "description": "",
   "license": "MIT",
   "scripts": {
-    "slither": "slither . --solc-remaps '@openzeppelin=node_modules/@openzeppelin' --exclude naming-convention,external-function,low-level-calls",
-    "slither:full": "slither . --solc-remaps '@openzeppelin=node_modules/@openzeppelin'",
-    "compile": "hardhat compile",
+    "slither": "slither . --solc-remaps slither-remaps.txt",
     "test": "hardhat test --typecheck",
     "deploy": "hardhat run scripts/deployment/main.ts",
     "lint": "solhint 'contracts/**/*.sol'",
     "lint:fix": "solhint 'contracts/**/*.sol' --fix",
     "format": "prettier --write 'contracts/**/*.sol'",
     "coverage": "hardhat coverage",
-    "fuzzing": "docker run -it --rm -v $PWD:/src trailofbits/eth-security-toolbox",
-    "start:local": "hardhat node",
-    "deploy:local": "hardhat --network localhost run scripts/deployment/main.ts",
     "typechain": "hardhat typechain && cd typechain && npx tsc && cd ..",
     "ts-lint": "eslint . --ext .ts"
   },
   "devDependencies": {
-    "@chainlink/contracts": "0.5.1",
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
     "@nomicfoundation/hardhat-chai-matchers": "^2.0.1",
@@ -31,9 +25,8 @@
     "@nomicfoundation/hardhat-verify": "^1.0.3",
     "@nomiclabs/hardhat-solhint": "^3.0.1",
     "@openzeppelin/contracts": "^5.0.0",
-    "@openzeppelin/contracts-upgradeable": "^5.0.0",
-    "@typechain/ethers-v6": "^0.4.0",
-    "@typechain/hardhat": "^8.0.0",
+    "@typechain/ethers-v6": "^0.5.1",
+    "@typechain/hardhat": "^9.1.0",
     "@types/chai": "^4.3.6",
     "@types/jest": "^29.5.4",
     "@types/mocha": "^10.0.1",
@@ -48,12 +41,12 @@
     "hardhat-deploy": "^0.11.37",
     "hardhat-deploy-ethers": "^0.4.1",
     "hardhat-gas-reporter": "^1.0.9",
-    "husky": "^8.0.1",
     "merkletreejs": "^0.3.10",
     "prettier": "^2.8.8",
     "prettier-plugin-solidity": "^1.1.3",
     "solhint": "^3.4.1",
     "solhint-plugin-prettier": "^0.0.5",
+    "solidity-bytes-utils": "^0.8.1",
     "solidity-coverage": "^0.8.2",
     "ts-node": "^10.9.1",
     "typechain": "^8.3.2",
@@ -66,6 +59,8 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "resolutions": {
+    "@typechain/hardhat": "^9.1.0",
     "@typescript-eslint/typescript-estree": "^5.60.0"
-  }
+  },
+  "packageManager": "yarn@4.0.2"
 }
