@@ -25,7 +25,7 @@ import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import {ERC20Burnable} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 
 contract ORIToken is ERC20, ERC20Burnable {
-    constructor(uint256 initialSupply) ERC20("Orivium", "ORI") {
-        _mint(_msgSender(), initialSupply);
+    constructor(uint256 _initialSupply, address _multiSigWallet) ERC20("Orivium", "ORI") {
+        _mint(_multiSigWallet, _initialSupply);
     }
 }

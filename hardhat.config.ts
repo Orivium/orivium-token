@@ -45,6 +45,11 @@ const config: HardhatUserConfig = {
             chainId: 11155111,
             ledgerAccounts,
         },
+        goerli: {
+            url: "https://ethereum-goerli.publicnode.com",
+            chainId: 5,
+            ledgerAccounts
+        },
         arbitrumSepolia: {
             url: "https://sepolia-rollup.arbitrum.io/rpc",
             chainId: 421614,
