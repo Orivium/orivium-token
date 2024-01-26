@@ -3,6 +3,7 @@ import "@nomicfoundation/hardhat-ethers";
 import "@nomiclabs/hardhat-solhint"
 import "@nomicfoundation/hardhat-toolbox"
 import "@nomicfoundation/hardhat-ledger";
+import "@nomicfoundation/hardhat-verify";
 import '@typechain/hardhat';
 
 import { EthGasReporterConfig } from "hardhat-gas-reporter/dist/src/types";
@@ -26,13 +27,24 @@ const gasReporter: EthGasReporterConfig = {
 if (process.env["COINMARKETCAP_API_KEY"]) {
     gasReporter.coinmarketcap = process.env["COINMARKETCAP_API_KEY"];
 }
+const ETHERSCAN_API_KEY = process.env["ETHERSCAN_API_KEY"] as string;
+const ARBITRUM_API_KEY = process.env["ARBITRUM_API_KEY"] as string;
 
+console.log("REPORT_GAS: " + ETHERSCAN_API_KEY);
 const ledgerAccounts = [
     "0x935967faD7ebE3E686cf3d835dEfEBA6B5a70CdC", // orivium admin public
 ];
 
 const config: HardhatUserConfig = {
-    solidity: "0.8.20",
+    solidity: {
+        version: "0.8.20",
+        settings: {
+            optimizer: {
+                enabled: true,
+                runs: 100000
+            },
+        },
+    },
     networks: {
         hardhat: {
             chainId: 31337,
@@ -67,6 +79,16 @@ const config: HardhatUserConfig = {
         },
     },
     defaultNetwork: "hardhat",
+    etherscan: {
+        apiKey: {
+            mainnet: ETHERSCAN_API_KEY,
+            arbitrumOne: ARBITRUM_API_KEY,
+
+            goerli: ETHERSCAN_API_KEY,
+            sepolia: ETHERSCAN_API_KEY,
+            arbitrumGoerli: ETHERSCAN_API_KEY,
+        },
+    },
     gasReporter,
     paths: {
         sources: "./contracts",
